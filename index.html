@@ -67,6 +67,19 @@
             alert("Invalid credentials. Please try again.");
         }
     });
+    
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.bundle.js").then(
+      (registration) => {
+        console.log("Service worker registration succeeded:", registration);
+      },
+      (error) => {
+        console.error(`Service worker registration failed: ${error}`);
+      },
+    );
+  } else {
+    console.error("Service workers are not supported.");
+  }
 </script>
 </body>
 </html>
